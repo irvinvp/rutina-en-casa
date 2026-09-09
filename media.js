@@ -1,0 +1,28 @@
+"use strict";
+window.EXERCISE_MEDIA = {
+  floorpress:{id:"uUGDRwge4F8",author:"ScottHermanFitness"},
+  row:{id:"L0DK9hYTeo0",author:"HASfit"},
+  pushup:{id:"wxhNoKZlfY8",author:"ScottHermanFitness"},
+  lateralraise:{id:"3VcKaXpzqRo",author:"ScottHermanFitness"},
+  triceps:{id:"tbJFDV-qnm0",author:"Gos Training Systems",variant:"La demostración usa dos mancuernas sobre el suelo. En esta rutina puedes hacer un brazo cada vez, con las repeticiones indicadas para cada lado."},
+  curl:{id:"sAq_ocpRh_I",author:"ScottHermanFitness"},
+  goblet:{id:"CkFzgR55gho",author:"Physique Development"},
+  rdl:{id:"QFbZevA7dps",author:"National Academy of Sports Medicine"},
+  bridge:{id:"ytvP0oUDKYw",author:"AskDoctorJo"},
+  calf:{id:"k8ipHzKeAkQ",author:"Children’s Hospital Colorado"},
+  abduction:{id:"UmmBtOG2N_s",author:"Medbridge"},
+  deadbug:{id:"GbSC02oU3To",author:"Hinge Health"},
+  sideplank:{id:"N_s9em1xTqU",author:"Children’s Hospital Colorado"},
+  birddog:{id:"xEDnlOxeJH4",author:"Hinge Health"},
+  shoulder:{id:"asnXDg1zEOs",author:"Jase Stuart · Better Body Academy"},
+  reversefly:{id:"ttvfGg9d76c",author:"ScottHermanFitness"},
+  hammer:{id:"zC3nLlEvin4",author:"ScottHermanFitness"},
+  split:{id:"qW5OGJ62ZjY",author:"Hinge Health"},
+  walkout:{id:"6yeyt5mUo94",author:"Runna"},
+  adduction:{id:"y4BmebZvZRE",author:"AskDoctorJo"},
+  plank:{id:"QpOgJLqeo14",author:"Nuffield Health"},
+  march:{id:"_Ox0N-Ab3Sc",author:"Doctor O’Donovan"},
+  sidesteps:{id:"yxFEa3H8K5s",author:"SteadyHealth"},
+  boxing:{id:"gGMrp-xTYm0",author:"Freedom Fitness"},
+  stepjacks:{id:"uft6Ke3xFEY",author:"Run and Stretch"}
+};
