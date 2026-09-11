@@ -4,13 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="description" content="Tu rutina de cinco días en casa con mancuernas: vídeos de ejecución, series, repeticiones y progresión.">
+  <meta name="description" content="Dos rutinas por cada uno de los cinco días: mismos grupos musculares, mancuernas y peso corporal, vídeos profesionales y técnica paso a paso.">
   <meta name="theme-color" content="#17201d">
-  <title>Rutina en casa · 5 días</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="routine.js" defer></script>
-  <script src="media.js" defer></script>
-  <script src="app.js" defer></script>
+  <title>Rutina en casa · 5 días, 2 opciones por día</title>
+  <link rel="stylesheet" href="styles.css?v=20260911">
+  <script src="routine.js?v=20260911" defer></script>
+  <script src="media.js?v=20260911" defer></script>
+  <script src="alternatives.js?v=20260911" defer></script>
+  <script src="app.js?v=20260911" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#sesion">Ir a los ejercicios</a>
@@ -21,7 +22,7 @@
     </div>
   </header>
   <main class="shell">
-    <div class="page-intro"><div><h1>Tu semana de entrenamiento</h1><p>Mancuernas y peso corporal. Elige un día y observa la ejecución antes de empezar.</p></div><span class="equipment-tag">En casa · Sin banco</span></div>
+    <div class="page-intro"><div><h1>Tu semana de entrenamiento</h1><p>Elige un día y una de sus dos rutinas. Mancuernas y peso corporal, con vídeos y técnica paso a paso.</p></div><span class="equipment-tag">2 opciones por día · Sin banco</span></div>
     <div class="days" role="tablist" aria-label="Días de entrenamiento">
       <button role="tab" id="tab-1" aria-controls="sesion" aria-selected="true" data-day="1"><span>Día 1</span><strong>Torso A</strong></button>
       <button role="tab" id="tab-2" aria-controls="sesion" aria-selected="false" tabindex="-1" data-day="2"><span>Día 2</span><strong>Piernas A</strong></button>
@@ -31,9 +32,10 @@
     </div>
     <div class="start-note"><strong>¿Estás empezando?</strong> Haz 1–2 series y deja 2–4 repeticiones posibles con buena técnica. Las tarjetas muestran la dosis objetivo, a la que puedes avanzar desde la semana 3 si recuperas bien.</div>
     <section id="sesion" role="tabpanel" aria-labelledby="tab-1" tabindex="0"></section>
-    <noscript><p>Activa JavaScript para cambiar de día y consultar los vídeos. La guía en PDF contiene la rutina completa.</p><a href="rutina.pdf">Abrir la guía PDF</a></noscript>
+    <noscript><p>Activa JavaScript para cambiar de día y consultar los vídeos. La guía inicial en PDF contiene la versión original. Las alternativas se consultan en esta página.</p><a href="rutina.pdf">Abrir la guía inicial PDF</a></noscript>
     <section class="guide" id="progresion">
       <div class="section-title"><span class="section-number" aria-hidden="true">↗</span><div><h2>Cómo progresar</h2><p>Primero controla el movimiento. Después aumenta la dificultad.</p></div></div>
+      <details class="variant-method"><summary>Cómo elegir la rutina principal o alternativa</summary><div class="detail-content"><p><strong>Elige una sola opción por día.</strong> Las alternativas cubren los mismos grupos y conservan una cantidad parecida de series. No sumes las series de las dos opciones. Puedes elegir, por ejemplo, la principal el día 1 y la alternativa el día 2.</p><p>Mantén tu elección varias semanas para comparar repeticiones, peso y técnica. Si una variante es nueva, empieza con 1–2 series y menos carga. En el trabajo unilateral, las repeticiones indicadas son para cada lado; completa ambos y después descansa.</p><p>Cambiar el agarre, el apoyo o el tiempo de pausa modifica el estímulo. Ninguna variante es universalmente superior. Algunas opciones, como la plancha lateral de rodillas, facilitan el control; otras exigen más equilibrio. Elige la que puedas ejecutar bien y progresar.</p><p>El PDF conserva la guía inicial. Las alternativas y los vídeos actualizados están en esta página.</p></div></details>
       <div class="progress-grid">
         <article><span class="week">Semanas 1–2</span><h3>Aprende la técnica</h3><p>1–2 series por ejercicio. Termina con un margen amplio. Cardio: 10–15 minutos en los días de fuerza y 20–30 el día 3.</p></article>
         <article><span class="week">Semanas 3–4</span><h3>Consolida la rutina</h3><p>Mantén 2 series o avanza a la dosis de las tarjetas si recuperas bien. Cardio: 15–20 minutos en fuerza y 30–40 el día 3.</p></article>
@@ -52,10 +54,11 @@
     <section class="guide" id="fuentes">
       <div class="section-title"><div><h2>Fundamento y fuentes</h2><p>La selección de ejercicios aplica la investigación a tu equipo y a una progresión gradual.</p></div></div>
       <details><summary>Qué respalda la investigación</summary><div class="detail-content"><p>El entrenamiento doméstico con peso corporal y resistencias puede mejorar fuerza y masa muscular. El resumen de ACSM de 2026 destaca regularidad, esfuerzo e individualización. El metaanálisis de Haugen y colaboradores no detectó diferencias significativas de hipertrofia entre máquinas y peso libre; la fuerza conserva especificidad según la tarea.</p><p>Un ensayo pequeño de Kikuchi y Nakazato halló resultados similares entre flexiones y press ligero con cargas comparables. Otro de Schoenfeld y colaboradores mostró que las cargas ligeras, usadas con suficiente esfuerzo, pueden aumentar grosor muscular; las cargas altas favorecieron más la fuerza máxima de sentadilla.</p><p>No hace falta agotar todas las series. El metaanálisis de Grgic no encontró diferencias significativas globales entre entrenar al fallo o detenerse antes. Esto no significa que cualquier esfuerzo bajo dé el mismo resultado.</p><p>Estos trabajos no probaron esta secuencia exacta de cinco días. Las equivalencias, descansos y dosis son una adaptación práctica. El plan supone una persona adulta sin restricciones médicas conocidas; si existen, necesita ajustes individuales.</p></div></details>
+      <details><summary>Cómo se eligieron las demostraciones profesionales</summary><div class="detail-content"><p>Se priorizaron vídeos con un movimiento identificable, equipo compatible y una fuente profesional trazable: <a href="https://www.nasm.org/resource-center/exercise-library/push-up" target="_blank" rel="noopener noreferrer">NASM</a>, <a href="https://www.orthoindy.com/physical-therapy" target="_blank" rel="noopener noreferrer">OrthoIndy</a>, <a href="https://www.therotherhamft.nhs.uk/services/physiotherapy" target="_blank" rel="noopener noreferrer">Rotherham NHS</a>, <a href="https://www.hingehealth.com/resources/articles/reverse-lunges/" target="_blank" rel="noopener noreferrer">Hinge Health</a> y <a href="https://tensegrityphysicaltherapy.com/staff/" target="_blank" rel="noopener noreferrer">Tensegrity Physical Therapy</a>.</p><p>También se incluyen bibliotecas de entrenamiento de <a href="https://www.opexfit.com/meet-the-team" target="_blank" rel="noopener noreferrer">OPEX</a>, <a href="https://www.runna.com/coaches" target="_blank" rel="noopener noreferrer">Runna</a> y <a href="https://hasfit.com/" target="_blank" rel="noopener noreferrer">HASfit</a>, y un bloque guiado de la British Heart Foundation. Cuando cambia la pausa, la carga o el apoyo respecto al vídeo, la tarjeta explica el ajuste.</p><p>Las fuentes enseñan la técnica; no han revisado ni avalado esta secuencia completa. La selección de variantes y dosis es una adaptación práctica al entrenamiento en casa. La procedencia y los enlaces se revisaron el 11 de septiembre de 2026; la disponibilidad de los vídeos depende de sus autores y de YouTube.</p></div></details>
       <div id="source-list" class="source-list"></div>
       <p class="media-note">Cada demostración enlaza al canal que la publicó. Algunos vídeos están en inglés; los pasos y ajustes de tu rutina están en español. Sigue las dosis de esta página aunque el vídeo proponga otra cantidad. Los vídeos requieren conexión a internet. Si un reproductor no carga, pulsa «Abrir en YouTube». Al abrir el HTML como archivo local, las demostraciones se abren directamente en YouTube.</p>
     </section>
   </main>
-  <footer class="shell footer"><span>Rutina de 5 días · Mancuernas y peso corporal</span><a href="rutina.pdf" target="_blank" rel="noopener">Consultar la guía PDF</a></footer>
+  <footer class="shell footer"><span>Rutina de 5 días · 2 opciones por día</span><a href="rutina.pdf" target="_blank" rel="noopener">Guía inicial en PDF</a></footer>
 </body>
 </html>

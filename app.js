@@ -5,6 +5,8 @@
   const panel = document.querySelector("#sesion");
   const tabs = [...document.querySelectorAll("[role=tab]")];
   let activeFrame = null;
+  const choices = Object.fromEntries(days.map(day => [day.id, "main"]));
+  let currentDayId = 1;
   const escape = value => String(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
   const watchURL = id => `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
 
@@ -15,23 +17,27 @@
 
   function card(key, number) {
     const item = exercises[key], video = media[key];
-    return `<article class="exercise"><div class="exercise-heading"><span class="exercise-num">${number}</span><div><h3>${escape(item.name)}</h3><div class="muscle">${escape(item.muscle)}</div></div></div><div class="media-frame" data-exercise="${escape(key)}">${poster(key)}</div><div class="video-source"><span>Vídeo: ${escape(video.author)}</span><a href="${watchURL(video.id)}" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube: ${escape(item.name)}">Abrir en YouTube ↗</a></div>${video.variant ? `<div class="media-variant">${escape(video.variant)}</div>` : ""}<div class="exercise-body"><div class="dose"><div><strong>${escape(item.dose)}</strong><small>${escape(item.unit)}</small></div><div class="rest">${key === "march" || key === "sidesteps" || key === "boxing" || key === "stepjacks" ? "Circuito" : "Descanso"}<b>${escape(item.rest)}</b></div></div><ol class="steps">${item.steps.map(step=>`<li>${escape(step)}</li>`).join("")}</ol><p class="cue"><b>Clave:</b> ${escape(item.cue)}</p><div class="easier"><b>Adaptación:</b> ${escape(item.easier)}</div></div></article>`;
+    return `<article class="exercise"><div class="exercise-heading"><span class="exercise-num">${number}</span><div><h3>${escape(item.name)}</h3><div class="muscle">${escape(item.muscle)}</div>${item.pattern ? `<div class="movement">${escape(item.pattern)}</div>` : ""}</div></div><div class="media-frame" data-exercise="${escape(key)}">${poster(key)}</div><div class="video-source"><span>Vídeo: ${escape(video.author)}</span><a href="${watchURL(video.id)}" target="_blank" rel="noopener noreferrer" aria-label="Abrir en YouTube: ${escape(item.name)}">Abrir en YouTube ↗</a></div>${video.source ? `<div class="professional-source"><a href="${escape(video.source)}" target="_blank" rel="noopener noreferrer">${escape(video.sourceLabel || "Guía técnica")} · ${escape(video.organization || video.author)} ↗</a>${video.credential ? `<span>${escape(video.credential)}</span>` : ""}</div>` : ""}${video.variant ? `<div class="media-variant">${escape(video.variant)}</div>` : ""}<div class="exercise-body">${item.replaces ? `<p class="replacement"><b>Alternativa a:</b> ${escape(item.replaces)}</p>` : ""}<div class="dose"><div><strong>${escape(item.dose)}</strong><small>${escape(item.unit)}</small></div><div class="rest">${item.kind === "cardio" || key === "march" || key === "sidesteps" || key === "boxing" || key === "stepjacks" ? "Circuito" : "Descanso"}<b>${escape(item.rest)}</b></div></div><ol class="steps">${item.steps.map(step=>`<li>${escape(step)}</li>`).join("")}</ol><p class="cue"><b>Clave:</b> ${escape(item.cue)}</p><div class="easier"><b>Adaptación:</b> ${escape(item.easier)}</div></div></article>`;
   }
 
   function imageFallbacks(container) {
     container.querySelectorAll(".video-poster img").forEach(img => { img.onerror = () => img.remove(); });
   }
 
-  function stopVideo() {
+  function stopVideo(restoreFocus = false) {
     if (activeFrame && activeFrame.isConnected) {
       activeFrame.innerHTML = poster(activeFrame.dataset.exercise);
       imageFallbacks(activeFrame);
+      if (restoreFocus) activeFrame.querySelector("button")?.focus();
     }
     activeFrame = null;
   }
 
   function showDay(id) {
-    const day = days.find(item => item.id === id) || days[0];
+    const baseDay = days.find(item => item.id === id) || days[0];
+    currentDayId = baseDay.id;
+    const isAlternative = choices[baseDay.id] === "alternative";
+    const day = isAlternative && baseDay.alternative ? {...baseDay, ...baseDay.alternative} : baseDay;
     stopVideo();
     tabs.forEach(tab => {
       const selected = Number(tab.dataset.day) === day.id;
@@ -40,7 +46,7 @@
     });
     panel.setAttribute("aria-labelledby", `tab-${day.id}`);
     const cardio = Boolean(day.cardio);
-    panel.innerHTML = `<div class="session-head"><div><h2>Día ${day.id} · ${escape(day.title)}</h2><p>${escape(day.subtitle)}</p></div><div class="session-meta"><span class="chip">${day.exercises.length} ejercicios ${cardio ? "de core" : "de fuerza"}</span><span class="chip">${cardio ? "Sin mancuernas" : "Mancuernas + suelo"}</span></div></div><div class="session-prep"><details><summary>Antes de empezar · ${cardio ? "5" : "5–8"} minutos de calentamiento</summary><div class="detail-content"><p>${cardio ? "Marcha suavemente y aumenta el ritmo poco a poco. Mueve hombros y caderas en un recorrido cómodo antes del bloque principal." : "Marcha suavemente, mueve hombros y caderas, y ensaya sentadillas o bisagras sin peso. Añade una serie fácil del primer ejercicio; no cuenta entre las series indicadas."}</p><p>Las dosis de las tarjetas son el objetivo. Al empezar, usa 1–2 series y conserva 2–4 repeticiones posibles. Cuando corresponda, completa ambos lados y luego descansa; puedes pausar brevemente entre lados. Amplía el descanso a 2–3 minutos si lo necesitas.</p></div></details></div>${cardio ? `<div class="cardio-intro"><h3>Cardio continuo · empieza con 20–30 minutos</h3><p>Repite este circuito de 5 minutos: <b>1 de marcha + 1 de pasos laterales + 1 de boxeo + 1 de step jacks + 1 de marcha.</b></p><p>Empieza con 4–6 vueltas; progresa hasta 10 vueltas o 50 minutos, que puedes repartir en dos bloques de 25. Busca una intensidad de 5–6 sobre 10: puedes hablar, pero no cantar. Las pausas suaves no cuentan como tiempo moderado.</p></div><div class="exercise-grid">${day.cardio.map((key,i)=>card(key,i+1)).join("")}</div><h3 class="subheading">Después del cardio · core y estabilidad</h3>` : ""}<div class="exercise-grid">${day.exercises.map((key,i)=>card(key,i+1)).join("")}</div><div class="after-session"><div><h3>${cardio ? "Vuelve a la calma" : "Termina con cardio"}</h3><p>${cardio ? "Camina o marcha suavemente 3–5 minutos. Si te resulta agradable, añade estiramientos cómodos, sin rebotes ni dolor." : "Empieza con 10–15 minutos de marcha, pasos laterales o boxeo al aire sin pesas. Progresa hasta 25 minutos moderados y termina con 3–5 minutos suaves. También puedes separar el cardio de la fuerza."}</p></div>${cardio ? "" : `<a href="#sesion" data-cardio-demo>Ver movimientos de cardio</a>`}</div>`;
+    panel.innerHTML = `<div class="session-head"><div><h2>Día ${day.id} · ${escape(day.title)}${isAlternative ? `<span class="version-label">Alternativa</span>` : ""}</h2><p>${escape(day.subtitle)}</p></div><div class="session-meta"><span class="chip">${day.exercises.length} ejercicios ${cardio ? "de core" : "de fuerza"}</span><span class="chip">${cardio ? "Sin mancuernas" : "Mancuernas + suelo"}</span></div></div><div class="variant-panel"><div class="variant-switch" role="group" aria-label="Rutina del día ${day.id}"><button type="button" data-variant="main" aria-pressed="${!isAlternative}">Rutina principal</button><button type="button" data-variant="alternative" aria-pressed="${isAlternative}">Rutina alternativa</button></div><p class="variant-guidance"><b>${isAlternative ? "Mismos grupos, otras variantes." : "Elige una de las dos opciones."}</b> ${escape(day.focus || "")} Haz una sola rutina por sesión. Conserva tu elección varias semanas para comparar el progreso.</p></div><div class="session-prep"><details><summary>Antes de empezar · ${cardio ? "5" : "5–8"} minutos de calentamiento</summary><div class="detail-content"><p>${cardio ? "Marcha suavemente y aumenta el ritmo poco a poco. Mueve hombros y caderas en un recorrido cómodo antes del bloque principal." : "Marcha suavemente, mueve hombros y caderas, y ensaya sentadillas o bisagras sin peso. Añade una serie fácil del primer ejercicio; no cuenta entre las series indicadas."}</p><p>Las dosis de las tarjetas son el objetivo. Al empezar, usa 1–2 series y conserva 2–4 repeticiones posibles. Cuando corresponda, completa ambos lados y luego descansa; puedes pausar brevemente entre lados. Amplía el descanso a 2–3 minutos si lo necesitas.</p></div></details></div>${cardio ? `<div class="cardio-intro"><h3>${escape(day.cardioTitle || "Cardio continuo · empieza con 20–30 minutos")}</h3>${(day.cardioInstructions || ["Repite este circuito de 5 minutos: 1 de marcha + 1 de pasos laterales + 1 de boxeo + 1 de step jacks + 1 de marcha.", "Empieza con 4–6 vueltas; progresa hasta 10 vueltas o 50 minutos, que puedes repartir en dos bloques de 25. Busca una intensidad de 5–6 sobre 10: puedes hablar, pero no cantar. Las pausas suaves no cuentan como tiempo moderado."]).map(p=>`<p>${escape(p)}</p>`).join("")}</div><div class="exercise-grid${day.cardio.length === 1 ? " single-card" : ""}">${day.cardio.map((key,i)=>card(key,i+1)).join("")}</div><h3 class="subheading">Después del cardio · core y estabilidad</h3>` : ""}<div class="exercise-grid">${day.exercises.map((key,i)=>card(key,i+1)).join("")}</div><div class="after-session"><div><h3>${cardio ? "Vuelve a la calma" : "Termina con cardio"}</h3><p>${cardio ? "Camina o marcha suavemente 3–5 minutos. Si te resulta agradable, añade estiramientos cómodos, sin rebotes ni dolor." : "Empieza con 10–15 minutos de marcha, pasos laterales o boxeo al aire sin pesas. Progresa hasta 25 minutos moderados y termina con 3–5 minutos suaves. También puedes separar el cardio de la fuerza."}</p></div>${cardio ? "" : `<a href="#sesion" data-cardio-demo>Ver movimientos de cardio</a>`}</div>`;
     imageFallbacks(panel);
   }
 
@@ -60,6 +66,15 @@
   });
 
   panel.addEventListener("click", event => {
+    const variantButton = event.target.closest("[data-variant]");
+    if (variantButton) {
+      const choice = variantButton.dataset.variant;
+      if (choice !== "main" && choice !== "alternative") return;
+      choices[currentDayId] = choice;
+      showDay(currentDayId);
+      panel.querySelector(`[data-variant="${choice}"]`)?.focus();
+      return;
+    }
     if (event.target.closest("[data-cardio-demo]")) {
       event.preventDefault();
       showDay(3);
@@ -67,7 +82,7 @@
       panel.scrollIntoView({block:"start"});
       return;
     }
-    if (event.target.closest("[data-stop-video]")) { stopVideo(); return; }
+    if (event.target.closest("[data-stop-video]")) { stopVideo(true); return; }
     const button = event.target.closest("[data-play]");
     if (!button) return;
     const key = button.dataset.play;

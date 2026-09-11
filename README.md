@@ -1,28 +1,36 @@
-# Rutina en casa · 5 días
+# Rutina en casa · 5 días, 2 opciones por día
 
-Página en español para entrenar con mancuernas y peso corporal. Incluye cinco sesiones, 25 demostraciones de YouTube, técnica paso a paso, adaptaciones, progresión y fuentes. No necesita banco ni máquinas.
+[**Abrir la página en GitHub Pages**](https://irvinvp.github.io/rutina-en-casa/)
 
-## Abrir en tu equipo
+Rutina en español con mancuernas y peso corporal. Cada día permite elegir entre la rutina principal y una alternativa que mantiene los mismos grupos musculares. No requiere banco, bandas ni máquinas.
 
-Descomprime el paquete y abre `index.html`. Los ejercicios y las instrucciones funcionan sin conexión; las imágenes y los vídeos necesitan internet. Al abrir el archivo localmente, las demostraciones se abren en YouTube. En GitHub Pages pueden reproducirse dentro de la página; siempre hay un enlace alternativo a YouTube.
+- Días 1 y 4: pecho, espalda, hombros, bíceps y tríceps.
+- Día 2: cuádriceps, glúteos, isquiotibiales, pantorrillas y abductores.
+- Día 3: cardio y estabilidad del tronco.
+- Día 5: piernas, aductores y abdomen.
 
-## Publicar en GitHub Pages
+Elige **una sola opción por sesión**. No sumes el volumen de ambas. Las tarjetas contienen series, repeticiones, descansos, ejecución, ajustes y enlaces de vídeo.
 
-1. Crea un repositorio **público**, por ejemplo `rutina-en-casa-mancuernas`, en tu cuenta de GitHub. Si vas a configurar Pages antes de subir esta página, inicialízalo con un README para disponer de la rama principal.
-2. Sube el contenido de este paquete a la raíz de la rama `main`: `index.html`, `styles.css`, `routine.js`, `media.js`, `app.js`, `rutina.pdf` y `.nojekyll`. El archivo HTML debe estar en la raíz, no dentro de una carpeta adicional.
-3. Abre **Settings → Pages → Build and deployment**. En Source elige **Deploy from a branch**; selecciona **main** y **/(root)**, y pulsa **Save**.
-4. Espera a que termine el despliegue. GitHub mostrará la dirección publicada en la sección Pages. No se necesita dominio propio ni instalar dependencias.
+## Demostraciones y fuentes
 
-Si la rama principal tiene otro nombre, elige esa rama. Publicar los archivos por sí solo no garantiza que Pages esté activado.
+Se han priorizado NASM, OrthoIndy, Rotherham NHS, Hinge Health, Tensegrity Physical Therapy, Runna, OPEX y HASfit. El cardio alternativo incluye una sesión de la British Heart Foundation. Se explican las diferencias de carga, pausa o apoyo respecto a la demostración cuando corresponde.
 
-Documentación oficial: [Configurar la fuente de publicación](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) y [Crear un repositorio](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository).
+La procedencia y el título de las nuevas demostraciones se verificaron mediante páginas oficiales e índices web el 11 de septiembre de 2026. No se verificó la reproducción completa ni la disponibilidad de incrustación de todas ellas. Cada tarjeta conserva un enlace directo a YouTube. Las entidades citadas no han revisado ni avalado esta rutina completa.
 
-## Contenido y referencias
+## Archivos
 
-La pestaña de cada día contiene la dosis objetivo. Quien empieza debe utilizar 1–2 series y avanzar gradualmente según tolerancia. La distribución es torso, piernas, cardio y core, torso y piernas. El detalle y las limitaciones de las sustituciones están en la página y en `rutina.pdf`.
+- `index.html`: página y explicaciones generales.
+- `styles.css`: presentación adaptable a móvil.
+- `routine.js`: rutina principal y referencias originales.
+- `media.js`: asignación original de vídeos.
+- `alternatives.js`: alternativas, funciones y actualización de fuentes audiovisuales.
+- `app.js`: selección de día, selección de rutina y reproductores.
+- `rutina.pdf`: guía inicial, anterior a la ampliación de alternativas.
 
-Las diez referencias científicas y técnicas están en la sección Fuentes. Las demostraciones se atribuyen individualmente a sus canales originales; los vídeos no se incluyen ni se redistribuyen en este paquete. Algunas demostraciones están en inglés; las instrucciones de la rutina están en español.
+Para consultar las opciones actualizadas, utiliza la página web. El PDF conserva la versión inicial.
 
-## Validación realizada
+## Uso y publicación
 
-Se comprobó la sintaxis JavaScript, la presencia de los cinco días y las 25 demostraciones, las referencias a archivos locales y el uso de rutas relativas compatibles con Pages de proyecto. Los vídeos se comprobaron mediante metadatos y miniaturas; no se revisó la reproducción completa de todos ellos. No se realizó una prueba de navegación en un navegador.
+Abre `index.html` en un navegador. Las imágenes y los vídeos requieren internet; al abrir un archivo local, las demostraciones se abren en YouTube.
+
+El repositorio publica desde `main`, carpeta `/(root)`, mediante GitHub Pages. No necesita dependencias ni compilación. Se conservan rutas relativas para funcionar bajo `/rutina-en-casa/`.

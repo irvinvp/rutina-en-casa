@@ -7,3 +7,23 @@
 @media print{.site-header nav,.days,.video-poster,.close-video,.after-session a,.footer{display:none}.shell{padding:0}.exercise-grid{grid-template-columns:1fr 1fr}.exercise{break-inside:avoid}.media-frame{display:none}.guide{break-before:page}.play-label{display:none}body{font-size:11pt}.steps{font-size:11pt}.exercise h3{font-size:15pt}.exercise-body{padding:12px}}
 
 @media(max-width:620px){.header-inner{flex-wrap:wrap;padding-block:14px}.site-header nav,.days button span,.days button strong{font-size:14px}.days button strong{overflow-wrap:normal}.days button{min-width:0}.chip{white-space:normal}.video-source span{overflow-wrap:anywhere}}
+
+/* Alternativas por día */
+.variant-panel{margin:0 0 22px;padding:18px 20px;background:var(--wash);border:1px solid var(--line);border-radius:14px}
+.variant-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;max-width:480px;padding:4px;background:#fff;border:1px solid var(--line);border-radius:11px}
+.variant-switch button{min-height:46px;padding:10px 14px;border:1px solid transparent;background:transparent;border-radius:7px;font-size:16px;font-weight:650;line-height:1.35}
+.variant-switch button[aria-pressed=true]{background:var(--accent);border-color:#a7c74b;color:var(--ink)}
+.variant-switch button:hover:not([aria-pressed=true]){background:var(--wash);border-color:var(--line)}
+.variant-guidance{font-size:16px;line-height:1.6;color:var(--muted);margin:13px 0 0;max-width:980px}
+.variant-guidance b{color:var(--ink)}
+.version-label{display:inline-block;vertical-align:middle;font-size:14px;font-weight:650;letter-spacing:0;line-height:1.4;padding:5px 10px;margin:0 0 3px 12px;background:var(--accent);border-radius:20px}
+.movement{font-size:14px;color:#4d624f;margin-top:4px}
+.replacement{font-size:14px;color:var(--muted);padding:0 0 12px;margin:0 0 13px;border-bottom:1px solid var(--line)}
+.replacement b{color:var(--ink)}
+.professional-source{padding:10px 22px;border-top:1px solid var(--line);font-size:14px;background:#fff}
+.professional-source a{font-weight:600}
+.professional-source span{display:block;color:var(--muted);font-size:14px;margin-top:4px}
+.exercise-grid.single-card{grid-template-columns:1fr;max-width:760px;margin-inline:auto}
+.variant-method{margin-bottom:22px}
+@media(max-width:620px){.variant-panel{padding:14px}.variant-switch button{padding:10px 8px;font-size:14px}.version-label{margin-left:0;margin-top:8px;display:table}.professional-source{padding-inline:20px}.variant-guidance{font-size:16px}.session-head h2{overflow-wrap:anywhere}}
+@media print{.variant-switch{display:none}.variant-panel{background:white}.professional-source{break-inside:avoid}.version-label{border:1px solid #777}}
